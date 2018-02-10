@@ -1,6 +1,8 @@
 Multipage react app with code splitting based on routes
 
-# STRCUTURE
+## STRCUTURE
+
+```
 src/
 	components/ -> contains reusable, state free components
 		SuperButton/ -> component folders must start with a capital letter
@@ -28,7 +30,7 @@ src/
 	index.js -> entry point. Where the app is provided with state and rendered.
 	store.js -> createStore, import reducers, middleware, initial state....
 	styles.css -> global app stylesheet
-
+```
 
 
 
