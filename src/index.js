@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 import './index.css';
-import PageRouter from './pages/router'
+import App from './app';
 
-ReactDOM.render(<PageRouter />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
