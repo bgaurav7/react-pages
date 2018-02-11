@@ -1,5 +1,37 @@
 ## Multipage react app with code splitting based on routes
 
+  - react-router-dom - Pages routing
+  - react-loadable - Code splitting for multiple pages
+  - Firebase - Firebase storage and authentication
+  - FirebaseUI - For authentication ui flow
+
+
+## Demo Available At [https://react-pages.firebaseapp.com/](https://react-pages.firebaseapp.com/)
+
+
+## Protect pages that require authentication.
+
+```
+import PrivateRoute from 'components/PrivateRoute'
+<Router>
+  <PrivateRoute path='/test' component={TestPage} />
+</Router>
+```
+
+## Firebase configration
+
+Replace firebase config in src/config.js to integrate wih your app.
+
+```
+// firebase config
+export const firebaseConfig = {
+  apiKey: "<FIREBASE_API_KEY>",
+  authDomain: "<APP_ID>.firebaseapp.com",
+  databaseURL: "https://<APP_ID>.firebaseio.com/",
+}
+
+```
+
 ## STRCUTURE
 
 ```
@@ -23,16 +55,15 @@ src/
 		Foo/
 			images/ -> images, svgs and other assets
 				logo.svg
-				banner.png
 			index.js
 		router.js -> assigns a route to a page
+    index.js -> App Home Page
 	services/ -> redux reducers, actions, apis, function
 	index.js -> entry point. Where the app is provided with state and rendered.
 	store.js -> createStore, import reducers, middleware, initial state....
 	styles.css -> global app stylesheet
+  config.js -> config variable, settings
 ```
-
-
 
 
 
