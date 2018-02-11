@@ -11,7 +11,7 @@ export const auth = firebaseApp.auth(); //the firebase auth namespace
 const userTokenKey = 'USER_AUTH_TOKEN';
 
 export const isAuthenticated = () => {
-  return !!auth.currentUser || !!window.localStorage.getItem(userTokenKey);
+  return !!auth.currentUser && !!window.localStorage.getItem(userTokenKey);
 }
 
 export const setLoggedIn = (user) => {
