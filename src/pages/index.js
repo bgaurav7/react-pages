@@ -5,7 +5,7 @@ import './style.css';
 
 import PageRouter from './router'
 
-import { auth, setLoggedIn, setLoggedOut, isAuthenticated, signOut } from 'utils/firebaseConnect'
+import { auth } from 'utils/firebaseConnect'
 
 export default class App extends Component {
 	state = {
@@ -15,10 +15,8 @@ export default class App extends Component {
 	componentDidMount() {
 		auth.onAuthStateChanged(user => {
 			if (user) {
-				setLoggedIn(user);
 				this.setState({uid: user.uid});
 			} else {
-				setLoggedOut();
 				this.setState({uid: null});
 			}
 		});
@@ -30,7 +28,7 @@ export default class App extends Component {
 
 	handleSignOut = (e) => {
 		e.preventDefault();
-		signOut();
+		auth.signOut();
 	}
 
 	render () {
@@ -38,14 +36,14 @@ export default class App extends Component {
 			<div className="App">
 				<header className="App-header">
 					<img src={logo} className="App-logo" alt="logo" /><br/>
-					{isAuthenticated() ? (
+					{this.state.uid ? (
 						<button onClick={this.handleSignOut}>Logout</button>
 					) : (
 						<h1 className="App-title">Not Authenticated</h1>
 					)}
 				</header>
 				<div>
-					<PageRouter />
+					<PageRouter auth={{uid: this.state.uid}} />
 				</div>
 			</div>
 		)

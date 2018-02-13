@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Link } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import PrivateRoute from 'components/PrivateRoute'
+import PublicRoute from 'components/PublicRoute'
 
 const Loading = () => <div>Loading...</div>;
 
@@ -42,10 +43,10 @@ const PageRouter = props => {
 					</div>
 				</nav>
 				<Switch>
-					<Route path='/' exact component={HomePage} />
-					<PrivateRoute path='/test' component={TestPage} />
-					<Route path='/login' state={ {from: '/'} } component={LoginPage} />
-					<Route path='*' component={NotFoundPage} />
+					<PublicRoute path='/' exact component={HomePage} {...props} />
+					<PrivateRoute path='/test' component={TestPage} {...props} />
+					<PublicRoute path='/login' state={ {from: '/'} } component={LoginPage} {...props} />
+					<PublicRoute path='*' component={NotFoundPage} {...props} />
 				</Switch>
 			</div>
 		</BrowserRouter>

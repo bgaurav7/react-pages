@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { FirebaseAuth } from 'react-firebaseui'
-import { auth, isAuthenticated } from 'utils/firebaseConnect'
+import { auth } from 'utils/firebaseConnect'
 import { firebaseSignInOptions } from 'config'
 
 const redirectKey = 'REDIRECT_KEY';
@@ -27,7 +27,8 @@ export default class Login extends Component {
 	}
 
 	render() {
-		if (isAuthenticated()) {
+		
+		if (this.props.auth.uid) {
 			let path = window.localStorage.getItem(redirectKey);
 			window.localStorage.setItem(redirectKey, defaultRedirectPath);
 
